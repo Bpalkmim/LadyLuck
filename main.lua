@@ -6,6 +6,8 @@
 -- Daqui, chamaremos o módulo View, que contém a interface gráfica.
 -- @version 0.1
 
+require("View/view")
+
 -- Módulo de Lua que representa esse arquivo.
 local main = {}
 

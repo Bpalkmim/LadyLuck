@@ -7,6 +7,13 @@
 -- pelo módulo Main e utiliza os módulos Dice e IO.
 -- @version 0.1
 
+package.path = package.path .. ";../Dice/dice.lua"
+local dice = require("dice")
+package.path = package.path .. ";../IO/reader.lua"
+local reader = require("reader")
+package.path = package.path .. ";../IO/writer.lua"
+local writer = require("writer")
+
 -- Módulo de Lua que representa esse arquivo.
 local view = {}
 
