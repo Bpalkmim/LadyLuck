@@ -12,7 +12,7 @@ local testsReader = {
 	-- Quantidade de erros encontrados.
 	errorsReader = 0
 }
-print(reader.readFile)
+
 -- Função para teste da função reader.readFile(fileName).
 -- @param expected Valor esperado do teste. Quantidade de jogadas.
 -- @return TRUE caso o teste tenha sido realizado com sucesso, FALSE caso contrário.

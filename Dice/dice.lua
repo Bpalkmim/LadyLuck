@@ -4,8 +4,7 @@
 -- @creation 2016/04/10
 -- @description Este arquivo está responsável por simular uma jogada
 -- de dado de 2 a 20 faces. Apesar de simples, aqui se encontra o coração
--- da aplicação. Suas funcionalidades são utilizadas pelos módulos View
--- e IO.
+-- da aplicação. Suas funcionalidades são utilizadas pelo módulo View.
 -- @version 0.1
 
 -- Módulo de Lua que representa esse arquivo.

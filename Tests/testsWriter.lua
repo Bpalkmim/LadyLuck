@@ -18,12 +18,23 @@ local testsWriter = {
 -- @param expected Valor esperado do teste. Quantidade de jogadas.
 -- @return TRUE caso o teste tenha sido realizado com sucesso, FALSE caso contrário.
 function testsWriter.write(expected)
+	local obtained = {}
+	local output = writer.writeFile("../Tests/output.csv", expected)
+	output:close()
+	output = assert(io.open(fileName, "r"))
 
+	-- Padrão para reconhecimento do arquivo. Expressão regular que representa
+	-- números inteiros positivos separados por vírgulas
+	local pattern = "(%d+)%s*,?%s*"
+	local i = 1
 
+	for val in string.gfind(io.read("*all"), pat) do
+		obtained[i] = tonumber(val)
+		i = i + 1
+    end
 
-
-
-	os.remove(path)
+	output:close()
+	os.remove("../Tests/output.csv")
 
 	if #obtained ~= #expected then
 		return false

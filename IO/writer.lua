@@ -13,7 +13,7 @@ local writer = {}
 -- Função que escreve o array recebido em um arquivo no formato CSV.
 -- @param fileName O nome do arquivo a ser criado.
 -- @param array O array a ser escrito.
--- @return TRUE caso o array tenha sido escrito, FALSE caso contrário.
+-- @return O arrat caso tenha sido escrito, nil caso contrário.
 function writer.writeFile(fileName, array)
 	local output = assert(io.open(fileName, "w"))
 
@@ -21,8 +21,11 @@ function writer.writeFile(fileName, array)
 		output:write(array[i], ",")
 	end
 
+	-- O último número não paresenta vírgula ao final.
 	output:write(array[#array])
 	output:close()
+
+	return array
 end
 
 return writer
