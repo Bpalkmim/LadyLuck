@@ -28,7 +28,8 @@ function tests.executeSuite()
 	--testsWriter.executeWriterTests()
 	print("Erros nos testes de Writer:", testsWriter.errorsWriter)
 
-	print("Total de erros nos testes:", testsDice.errorsDice + testsReader.errorsReader + testsWriter.errorsWriter)
+	print("Total de erros nos testes:", testsDice.errorsDice + 
+		testsReader.errorsReader + testsWriter.errorsWriter)
 end
 
 -- Execução dos testes

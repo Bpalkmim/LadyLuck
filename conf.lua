@@ -1,4 +1,4 @@
--- @module View
+-- @module Conf
 -- @file conf.lua
 -- @author Bernardo Pinto de Alkmim
 -- @creation 2016/04/11
@@ -15,7 +15,14 @@ local conf = {}
 function love.conf(window)
 	window.title = "Lady Luck"
 	window.version = "0.10.1" -- Versão de Löve dessa aplicação
-	window.window.width = 640
+	window.author = "Bernardo Alkmim"
+	window.modules.graphics = true
+	window.modules.image = true
+	window.modules.keyboard = true
+	window.modules.mouse = true
+	window.modules.event = true
+	window.window.fullscreen = false
+	window.window.width = 720
 	window.window.height = 480
 end
 
