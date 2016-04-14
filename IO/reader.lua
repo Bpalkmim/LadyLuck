@@ -5,7 +5,7 @@
 -- @description Este arquivo é responsável por ler arquivos CSV e gerar
 -- arrays de inteiros. Utilizado pelo módulo View, e utiliza o módulo 
 -- Dice para os arrays.
--- @version 0.1
+-- @version 0.8
 
 -- Módulo de Lua que representa esse arquivo.
 local reader = {
@@ -15,7 +15,8 @@ local reader = {
 -- Função que lê uma sequência de números de um arquivo e os guarda num
 -- array. O arquivo deve estar no formato CSV.
 -- @param fileName O nome do arquivo a ser lido.
--- @return O array criado.
+-- @return O array criado. Caso o arquivo não tenha sido aberto ou esteja vazio,
+-- esse array estará vazio.
 function reader.readFile(fileName)
 	local array = {}
 	-- Padrão para reconhecimento do arquivo. Expressão regular que representa

@@ -4,7 +4,7 @@
 -- @creation 2016/04/11
 -- @description Este arquivo é responsável por rodar os testes de IO
 -- (e quaisquer outros que sejam necessários).
--- @version 0.1
+-- @version 0.8
 
 package.path = package.path .. ";../Dice/dice.lua"
 local testsDice = require("testsDice")

@@ -3,7 +3,7 @@
 -- @author Bernardo Pinto de Alkmim
 -- @creation 2016/04/11
 -- @description Este arquivo é responsável por realizar testes com o módulo Dice.
--- @version 0.1
+-- @version 1.0
 
 local dice = require("dice")
 

@@ -4,7 +4,7 @@
 -- @creation 2016/04/11
 -- @description Este arquivo é responsável pela configuração da interface
 -- gráfica da aplicação.
--- @version 0.1
+-- @version 1.0
 
 -- Módulo de Lua que representa esse arquivo.
 local conf = {}

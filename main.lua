@@ -4,7 +4,7 @@
 -- @creation 2016/04/11
 -- @description Este arquivo é responsável por gerar a interface gráfica com
 -- o usuário, mostrando menus, os dados rodados e gráficos gerados.
--- @version 0.1
+-- @version 0.8
 
 local dice = require("Dice/dice")
 local reader = require("IO/reader")

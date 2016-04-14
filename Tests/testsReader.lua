@@ -3,7 +3,7 @@
 -- @author Bernardo Pinto de Alkmim
 -- @creation 2016/04/11
 -- @description Este arquivo é responsável por realizar testes com o módulo Reader.
--- @version 0.1
+-- @version 0.8
 
 local reader = require("reader")
 

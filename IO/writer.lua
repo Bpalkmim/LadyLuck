@@ -5,7 +5,7 @@
 -- @description Este arquivo é responsável por ler arquivos CSV e gerar
 -- arrays de inteiros. Utilizado pelo módulo View, e utiliza o módulo 
 -- Dice para os arrays.
--- @version 0.1
+-- @version 0.8
 
 -- Módulo de Lua que representa esse arquivo.
 local writer = {
@@ -15,7 +15,7 @@ local writer = {
 -- Função que escreve o array recebido em um arquivo no formato CSV.
 -- @param fileName O nome do arquivo a ser criado.
 -- @param array O array a ser escrito.
--- @return O array caso tenha sido escrito, nil caso contrário.
+-- @return O array escrito. Ao fim, o arquivo terá sido criado.
 function writer.writeFile(fileName, array)
 	local output = nil
 
@@ -25,6 +25,7 @@ function writer.writeFile(fileName, array)
 		output = love.filesystem.newFile(fileName, "w")
 		output:open("w")
 	end
+
 	if #array > 0 then 
 		for i=1,(#array-1) do
 			output:write(array[i], ",")
