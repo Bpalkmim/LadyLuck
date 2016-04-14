@@ -20,67 +20,83 @@ local lastRoll = 0
 
 -- Função que desenha a janela quando a aplicação inicia.
 function love.load()
-	love.graphics.setBackgroundColor(100,100,100)
+	love.graphics.setBackgroundColor(100, 100, 100)
 end
 
 -- Função principal de desenho. É chamada pela função main da aplicação e desenha
 -- a janela.
 function love.draw(dt)
-	local welcomeMessage = [[Lady Luck sorri para você!
+	local welcomeMessage = [[A Dama da Sorte sorri para você!
 
 Utilize as setas <para cima> e <para baixo> do teclado para selecionar o número de faces do dado.
 Para rolá-lo, pressione a <barra de espaço>.
-Caso queira visualizar seu histórico de jogadas, pressione a tecla <H>.
 Para importar as jogadas do arquivo "hist.csv", pressione <I>.
 Para exportar o histórico de jogadas corrente para o arquivo "hist.csv", pressione <E>.
 Para fechar a aplicação, pressione <F>.
 	]]
 	love.graphics.setColor(0, 0, 0)
-	love.graphics.print(welcomeMessage, 10, 10)
+	love.graphics.print(welcomeMessage, 30, 30)
 
-	local diceSizeMessage = "Tamanho do dado: " .. diceSize
+	local diceSizeMessage = "Número de faces do dado: " .. diceSize
 	love.graphics.setColor(0, 0, 0)
-	love.graphics.print(diceSizeMessage, 10, 130)
+	love.graphics.print(diceSizeMessage, 30, 150)
 
 	local lastRollMessage = "Última jogada: " .. lastRoll
 	love.graphics.setColor(0, 0, 0)
-	love.graphics.print(lastRollMessage, 10, 150)
+	love.graphics.print(lastRollMessage, 30, 170)
+
+	if lastRoll == 0 or #(dice.history) ~= 0 then
+		showHistory()
+	elseif #(dice.history) == 0 then
+		love.graphics.setColor(0, 0, 0)
+		love.graphics.print("Não foi possível ler o arquivo!", 30, 210)
+	end
 end
 
--- Desenha os componentes gráficos da aplicação e realiza interface com o usuário.
- 
--- Increase the size of the rectangle every frame.
+-- Atualiza as funcionalidades da aplicação.
 function love.update(dt)
+
+end
+
+-- Função que mostra o histórico de jogadas do dado atual.
+function showHistory()
+	-- Fundo
+	love.graphics.setColor(255, 255, 255)
+	love.graphics.rectangle("fill", 30, 240, 660, 200)
+	-- Pontos no gráfico
+	local initXPos = 30
+	local initYPos = 430
+	local incXPos = 25
+	local incYPos = 8
+	love.graphics.setColor(0, 0, 50)
+	for i=1,#(dice.history) do
+		love.graphics.circle("fill", initXPos + i*incXPos, initYPos - dice.history[i]*incYPos, 5, 10)
+		love.graphics.print(dice.history[i], initXPos + i*incXPos - 3, initYPos - dice.history[i]*incYPos - 20)
+	end
+end
+
+function love.keypressed(key, scancode, isrepeat)
 	-- Aumentar o tamanho do dado
-	if love.keyboard.isDown("up") then
+	if key == "up" then
 		if diceSize < 20 then
 			diceSize = diceSize + 1
 		end
-	end
 	-- Diminuir o tamanho do dado
-	if love.keyboard.isDown("down") then
+	elseif key == "down" then
 		if diceSize > 2 then
 			diceSize = diceSize - 1
 		end
-	end
 	-- Rolar o dado
-	if love.keyboard.isDown("space") then
+	elseif key == "space" then
 		lastRoll = dice.roll(diceSize)
-	end
-	-- Mostrar o histórico de jogadas
-	if love.keyboard.isDown("h") then
-		lastRoll = dice.roll(diceSize)
-	end
 	-- Importar do arquivo
-	if love.keyboard.isDown("i") then
-		lastRoll = dice.roll(diceSize)
-	end
+	elseif key == "i" then
+		dice.history = reader.readFile("./LadyLuck/hist.csv")
 	-- Exportar para o arquivo
-	if love.keyboard.isDown("e") then
-		lastRoll = dice.roll(diceSize)
-	end
+	elseif key == "e" then
+		dice.history = writer.writeFile("./LadyLuck/hist.csv", dice.history)
 	-- Fechar a aplicação
-	if love.keyboard.isDown("f") then
+	elseif key == "f" then
 		love.event.quit(0)
 	end
 end

@@ -35,6 +35,7 @@ end
 -- Função que executa os métodos de testes de cada função. É chamada pela suíte de
 -- testes no módulo tests.
 function testsReader.executeReaderTests()
+	reader.debug = true
 	print("Testando Reader: read")
 	if testsReader.read({5, 9, 3, 6, 10, 11, 17, 2, 1, 3}) == false then
 		print("--Erro em Reader: read")

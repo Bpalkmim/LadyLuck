@@ -52,6 +52,7 @@ end
 -- Função que executa os métodos de testes de cada função. É chamada pela suíte de
 -- testes no módulo tests.
 function testsWriter.executeWriterTests()
+	writer.debug = true
 	print("Testando Writer: write")
 	if testsWriter.write({5, 9, 3, 6, 10, 11, 17, 2, 1, 3}) == false then
 		print("--Erro em Writer: write")

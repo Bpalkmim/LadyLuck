@@ -8,7 +8,9 @@
 -- @version 0.1
 
 -- Módulo de Lua que representa esse arquivo.
-local reader = {}
+local reader = {
+	debug = false
+}
 
 -- Função que lê uma sequência de números de um arquivo e os guarda num
 -- array. O arquivo deve estar no formato CSV.
@@ -16,19 +18,26 @@ local reader = {}
 -- @return O array criado.
 function reader.readFile(fileName)
 	local array = {}
-	local input = assert(io.open(fileName, "r"))
-
 	-- Padrão para reconhecimento do arquivo. Expressão regular que representa
 	-- números inteiros positivos separados por vírgulas
 	local pattern = "(%d+)%s*,?%s*"
 	local i = 1
+	local input = nil
 
-	for val in string.gfind(io.read("*all"), pat) do
+	if debug == true then
+		input = assert(io.open(fileName, "r"))
+	else
+		input = love.filesystem.newFile(fileName, "r")
+		input:open("r")
+	end
+
+	for val in string.gfind(input:read("*all"), pat) do
 		array[i] = tonumber(val)
 		i = i + 1
-    end
+	end
 
 	input:close()
+
 	return array
 end
 
