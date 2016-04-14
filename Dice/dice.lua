@@ -25,7 +25,8 @@ function dice.getHistory()
 end
 
 -- Função que rola o dado utilizando LCG, que gera uma distribuição uniforme
--- de números pseudoaleatórios.
+-- de números pseudoaleatórios. Ela também preenche o array dice.history com
+-- o valor encontrado.
 -- @param max Valor máximo possível.
 -- @return Valor obtido no dado.
 function dice.roll(max)

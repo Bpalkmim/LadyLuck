@@ -13,9 +13,9 @@ local writer = require("IO/writer")
 -- Módulo de Lua que representa esse arquivo.
 local view = {}
 
--- Tamanho atual do dado
+-- Tamanho atual do dado. Poderá assumir valores de 2 a 20.
 local diceSize = 6
--- Valor da última jogada
+-- Valor da última jogada.
 local lastRoll = 0
 
 -- Função que desenha a janela quando a aplicação inicia.
@@ -23,8 +23,9 @@ function love.load()
 	love.graphics.setBackgroundColor(100, 100, 100)
 end
 
--- Função principal de desenho. É chamada pela função main da aplicação e desenha
--- a janela.
+-- Função principal de desenho. É chamada constantemente durante a execução da aplicação.
+-- Com ela, são mostradas mensagens na tela mensagens ao usuário, além do seu histórido
+-- de jogadas do dado.
 function love.draw(dt)
 	local welcomeMessage = [[A Dama da Sorte sorri para você!
 
@@ -55,10 +56,11 @@ end
 
 -- Atualiza as funcionalidades da aplicação.
 function love.update(dt)
-
+	-- Vazia. Ainda não se mostrou necessária.
 end
 
--- Função que mostra o histórico de jogadas do dado atual.
+-- Função que mostra o histórico de jogadas do dado atual. É chamada por
+-- love.draw().
 function showHistory()
 	-- Fundo
 	love.graphics.setColor(255, 255, 255)
@@ -75,6 +77,7 @@ function showHistory()
 	end
 end
 
+-- Função que gera uma ação para cada tecla apertada.
 function love.keypressed(key, scancode, isrepeat)
 	-- Aumentar o tamanho do dado
 	if key == "up" then
